@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -15,7 +16,6 @@ public class Mobs : MonoBehaviour
         foreach(var mob in mobs)
         {
             mob.GameObject = area.Inst(mob.GameObject, new Vector3(mob.Points[0].x + 0.5f, mob.Points[0].y + 0.5f), Quaternion.identity);
-
         }
     }
 
@@ -24,7 +24,7 @@ public class Mobs : MonoBehaviour
     {
         if(DateTime.Now - upDt >= new TimeSpan(0, 0, 1))
         {
-            mobs.ForEach(p => p.Motion(area));
+            mobs.Where(p => p.GameObject != null).ToList().ForEach(p => p.Motion(area));
             upDt = DateTime.Now;
         }
 

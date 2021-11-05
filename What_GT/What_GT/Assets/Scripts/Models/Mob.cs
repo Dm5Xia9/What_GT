@@ -15,6 +15,7 @@ public class Mob
     public Vector2Int CurrentPoint => Points[currentIndex];
     private Direction direction;
     public float Damage;
+    public float Xp;
 
     public void Motion(Area area)
     {
@@ -51,6 +52,30 @@ public class Mob
         {
             area.UserService.Hit(Damage);
         }
+
+        if (area.UserService.Item is RangedWeapon wea)
+        {
+            var damages = wea.ShellObjs.Where(p => p != null && p.CurrentPosition == CurrentPoint);
+
+            if (damages.Any())
+            {
+                Hit(damages.Sum(p => p.Damage));
+            }
+
+            foreach (var d in damages)
+                d.Del();
+        }
+
+        
+    }
+
+    public void Hit(float damage)
+    {
+        Xp -= damage;
+
+        if (Xp <= 0)
+            GameObject.Destroy(GameObject);
+
     }
 }
 
