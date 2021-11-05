@@ -199,7 +199,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mobs:
   - GameObject: {fileID: 490503659075299504, guid: bacc71e4461010b429c02a6260c62129, type: 3}
-    StartPosition: {x: 3, y: 3}
+    Points:
+    - {x: 3, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 4}
+    currentIndex: 0
+    direction: 0
 --- !u!4 &203653690
 Transform:
   m_ObjectHideFlags: 0
