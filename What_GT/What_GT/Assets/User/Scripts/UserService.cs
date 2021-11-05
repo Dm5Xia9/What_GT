@@ -35,7 +35,7 @@ public class UserService
         CurrentPostition = StartPosition;
         CurrentTile = tilemap.GetTile(StartPosition);
 
-        User = area.Inst(User, StartPosition, Quaternion.identity);
+        User = area.Inst(User, new Vector3(StartPosition.x + 0.5f, StartPosition.y + 0.5f), Quaternion.identity);
 
         if (!blocks.FirstOrDefault(p => p.Tile == CurrentTile)?.IsMotion ?? true)
         {
@@ -77,7 +77,7 @@ public class UserService
             return;
         }
 
-        User.transform.position = CurrentPostition;
+        User.transform.position = new Vector3(CurrentPostition.x + 0.5f, CurrentPostition.y + 0.5f);
     }
 
 
