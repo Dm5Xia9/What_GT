@@ -16,6 +16,15 @@ public abstract class Item : MonoBehaviour
     private GameObject activeBorder;
     public int DelayMilliseconds = 1000;
     public TimeSpan Delay => new TimeSpan(0, 0, 0, 0, DelayMilliseconds);
+    public Vector3 SizeDropIcon;
+    public Vector3 SizeMainIcon;
+
+    public List<Shell> ShellObjs { get; set; }
+
+    private void Start()
+    {
+        ShellObjs = new List<Shell>();
+    }
 
     public virtual void Action(Area area, KeyCode keyCode)
     {

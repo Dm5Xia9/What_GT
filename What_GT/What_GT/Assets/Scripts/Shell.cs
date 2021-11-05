@@ -9,11 +9,11 @@ public class Shell : MonoBehaviour
 {
     public float Damage;
     private bool isInit;
-
+    public Vector3 Size;
     public Vector2Int CurrentPosition { get; set; }
     public TileBase CurrentTile { get; set; }
     public int Timer = 500;
-    Area area;
+    protected Area area;
     KeyCode keyCode;
     public bool IsKeyW { get; set; }
     public bool IsKeyD { get; set; }
@@ -30,6 +30,7 @@ public class Shell : MonoBehaviour
         this.keyCode = keyCode;
         CurrentPosition = area.UserService.CurrentPostition;
         gameObject.transform.position = new Vector3(CurrentPosition.x + 0.5f, CurrentPosition.y + 0.5f, gameObject.transform.position.z);
+        gameObject.transform.localScale = Size;
         print("init");
         IsKeyW = keyCode == KeyCode.UpArrow;
         IsKeyD = keyCode == KeyCode.RightArrow;
@@ -85,18 +86,18 @@ public class Shell : MonoBehaviour
         if (mob != null)
         {
             mob.Hit(Damage);
-            Del();
+            Collision();
         }
 
         var isDamageUser = area.UserService.CurrentPostition == CurrentPosition;
         if (isDamageUser)
         {
             area.UserService.Hit(Damage);
-            Del();
+            Collision();
         }
     }
 
-    public void Del()
+    private void Del()
     {
         if(gameObject != null)
             Destroy(gameObject);

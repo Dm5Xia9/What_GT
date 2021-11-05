@@ -54,8 +54,7 @@ public class UserService
         ParentPrompt = Prompt.GetComponentInParent<Image>().gameObject;
         BaseIcon = userOptions.BaseIcon;
 
-        IconStrite.GetComponent<SpriteRenderer>().sprite = 
-            Item.gameObject.GetComponent<SpriteRenderer>().sprite;
+        RefrashIcon();
 
         if (!blocks.FirstOrDefault(p => p.Tile == CurrentTile)?.IsMotion ?? true)
         {
@@ -129,14 +128,14 @@ public class UserService
     }
 
     private DateTime dtLock = DateTime.Now;
+    private bool tk;
     public void TakingItems()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
         {
-            if (DateTime.Now - dtLock < new TimeSpan(0, 0, 0, 0, 100))
+            if (DateTime.Now - dtLock < new TimeSpan(0, 0, 0, 0, 300))
                 return;
 
-            dtLock = DateTime.Now;
             var item = area.LiesItemsObj.Items.FirstOrDefault(p => p.Position == CurrentPostition);
             if (takeType == TakeType.My)
             {
@@ -145,6 +144,7 @@ public class UserService
                 takeType = TakeType.Give;
                 RefrashIcon();
                 RefrashPrompt(null);
+                tk = true;
             }
             else if(takeType == TakeType.Exchange)
             {
@@ -153,6 +153,7 @@ public class UserService
                 area.LiesItemsObj.Remove(item);
                 RefrashIcon();
                 RefrashPrompt(lies);
+                tk = true;
             }
             else if(takeType == TakeType.Give && item == null && Item != null)
             {
@@ -161,20 +162,29 @@ public class UserService
                 takeType = TakeType.My;
                 RefrashIcon();
                 RefrashPrompt(lies);
+                tk = true;
+            }
+
+            if (tk)
+            {
+                dtLock = DateTime.Now;
+                tk = false;
             }
         }
     }
 
     private void RefrashIcon()
     {
+        var render = IconStrite.GetComponent<SpriteRenderer>();
         if (Item == null)
         {
-            IconStrite.GetComponent<SpriteRenderer>().sprite = BaseIcon;
+            render.sprite = BaseIcon;
+            render.transform.localScale = new Vector3(1, 1, 1);
             return;
         }
 
-        IconStrite.GetComponent<SpriteRenderer>().sprite =
-            Item.gameObject.GetComponent<SpriteRenderer>().sprite;
+        render.sprite = Item.gameObject.GetComponent<SpriteRenderer>().sprite;
+        render.transform.localScale = Item.SizeMainIcon;
     }
     private void RefrashPrompt(Lies item)
     {
@@ -262,7 +272,7 @@ public class UserService
             }
 
             foreach (var d in damages)
-                d.Del();
+                d.Collision();
         }
 
         var item = area.LiesItemsObj.Items.FirstOrDefault(p => p.Position == CurrentPostition);

@@ -63,7 +63,7 @@ public class Mob
             }
 
             foreach (var d in damages)
-                d.Del();
+                d.Collision();
         }
 
         

@@ -8,13 +8,6 @@ using UnityEngine;
 public class RangedWeapon : Item
 {
     public GameObject Shell;
-    public List<Shell> ShellObjs { get; set; }
-
-    private void Start()
-    {
-        ShellObjs = new List<Shell>();
-    }
-
     public override void Action(Area area, KeyCode keyCode)
     {
         var shell = Instantiate(Shell);

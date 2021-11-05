@@ -15,9 +15,9 @@ public class LiesItems : MonoBehaviour
         this.area = area;
         foreach (var item in Items)
         {
-            item.GameObject = area.Inst(item.Item.gameObject, new Vector3(item.Position.x + 0.5f, item.Position.y + 0.5f), Quaternion.identity);
+            item.GameObject = area.Inst(item.Item.gameObject, new Vector3(item.Position.x + 0.5f, item.Position.y + 0.5f, -0.14f), Quaternion.identity);
 
-            item.GameObject.transform.localScale = new Vector3(1, 1);
+            item.GameObject.transform.localScale = item.Item.SizeDropIcon;
         }
     }
 
@@ -26,10 +26,11 @@ public class LiesItems : MonoBehaviour
         var lies = new Lies()
         {
             Item = item,
-            Position = position
+            Position = position,
         };
 
-        lies.GameObject = area.Inst(lies.Item.gameObject, new Vector3(lies.Position.x + 0.5f, lies.Position.y + 0.5f), Quaternion.identity);
+        lies.GameObject = area.Inst(lies.Item.gameObject, new Vector3(lies.Position.x + 0.5f, lies.Position.y + 0.5f, -0.14f), Quaternion.identity);
+        lies.GameObject.transform.localScale = lies.Item.SizeDropIcon;
         Items.Add(lies);
         return lies;
     }
