@@ -10,11 +10,13 @@ public class Area : MonoBehaviour
     public UserService UserService { get; set; }
 
     public GameObject Blocks;
+    public GameObject Mobs;
     public Tilemap Tilemap => gameObject.GetComponentInParent<Tilemap>();
 
     void Start()
     {
         UserService = new UserService(UserOptions, Blocks.GetComponent<Blocks>().blocks, this);
+        Mobs.GetComponent<Mobs>().Init(this);
     }
 
     void Update()
@@ -25,5 +27,10 @@ public class Area : MonoBehaviour
     public T Inst<T>(T original, Vector3 position, Quaternion rotation) where T : Object
     {
         return Instantiate(original, position, rotation);
+    }
+
+    public void Print(object message)
+    {
+        print(message);
     }
 }
