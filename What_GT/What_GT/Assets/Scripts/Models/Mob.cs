@@ -11,9 +11,11 @@ public class Mob
     public GameObject GameObject;
     public List<Vector2Int> Points;
 
-    public int currentIndex;
+    private int currentIndex;
     public Vector2Int CurrentPoint => Points[currentIndex];
-    public Direction direction;
+    private Direction direction;
+    public float Damage;
+
     public void Motion(Area area)
     {
         if(direction == Direction.There)
@@ -44,6 +46,11 @@ public class Mob
         }
 
         GameObject.transform.position = new Vector3(CurrentPoint.x + 0.5f, CurrentPoint.y + 0.5f);
+
+        if(area.UserService.CurrentPostition == CurrentPoint)
+        {
+            area.UserService.Hit(Damage);
+        }
     }
 }
 

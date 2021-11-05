@@ -9,7 +9,8 @@ using UnityEngine.Tilemaps;
 [Serializable]
 public class UserOptions
 {
-    public Vector3Int StartPosition;
+    public Vector2Int StartPosition;
     public GameObject User;
     public int Step;
+    public float MaxXp;
 }
