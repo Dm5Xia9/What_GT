@@ -16,22 +16,26 @@ public class UserService
     public TileBase CurrentTile { get; set; }
 
     public Vector3Int StartPosition { get; set; }
-    public TileBase TileUser { get; set; }
+    public GameObject User { get; set; }
     public int Step { get; set; }
 
-    private Tilemap area;
+    private Tilemap tilemap;
     private List<Block> blocks;
-    public UserService(UserOptions userOptions, Tilemap area, List<Block> blocks)
+    private Area area;
+    public UserService(UserOptions userOptions, List<Block> blocks, Area area)
     {
         this.blocks = blocks;
         StartPosition = userOptions.StartPosition;
-        TileUser = userOptions.TileUser;
+        User = userOptions.User;
         Step = userOptions.Step;
         this.area = area;
+        tilemap = area.Tilemap;
+
 
         CurrentPostition = StartPosition;
-        CurrentTile = area.GetTile(StartPosition);
-        area.SetTile(StartPosition, TileUser);
+        CurrentTile = tilemap.GetTile(StartPosition);
+
+        User = area.Inst(User, StartPosition, Quaternion.identity);
 
         if (!blocks.FirstOrDefault(p => p.Tile == CurrentTile)?.IsMotion ?? true)
         {
@@ -64,7 +68,7 @@ public class UserService
         var lastTile = CurrentTile;
 
         CurrentPostition = vectorFunc(CurrentPostition, c);
-        CurrentTile = area.GetTile(CurrentPostition);
+        CurrentTile = tilemap.GetTile(CurrentPostition);
 
         if(!blocks.FirstOrDefault(p => p.Tile == CurrentTile)?.IsMotion ?? true)
         {
@@ -73,8 +77,7 @@ public class UserService
             return;
         }
 
-        area.SetTile(lastPosition, lastTile);
-        area.SetTile(CurrentPostition, TileUser);
+        User.transform.position = CurrentPostition;
     }
 
 

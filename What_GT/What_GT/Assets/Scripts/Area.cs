@@ -14,11 +14,16 @@ public class Area : MonoBehaviour
 
     void Start()
     {
-        UserService = new UserService(UserOptions, Tilemap, Blocks.GetComponent<Blocks>().blocks);
+        UserService = new UserService(UserOptions, Blocks.GetComponent<Blocks>().blocks, this);
     }
 
     void Update()
     {
         UserService.Motion();
+    }
+
+    public T Inst<T>(T original, Vector3 position, Quaternion rotation) where T : Object
+    {
+        return Instantiate(original, position, rotation);
     }
 }

@@ -10,6 +10,6 @@ using UnityEngine.Tilemaps;
 public class UserOptions
 {
     public Vector3Int StartPosition;
-    public TileBase TileUser;
+    public GameObject User;
     public int Step;
 }

@@ -2427,7 +2427,6 @@ GameObject:
   - component: {fileID: 683206134}
   - component: {fileID: 683206133}
   - component: {fileID: 683206132}
-  - component: {fileID: 683206135}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -2517,27 +2516,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &683206135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683206130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d435b621f0d9cd4ea644ae117dd8ead, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BasePanel: {fileID: 0}
-  MaxElements: 0
-  Items: []
-  LeftPadding: 0
-  Ot: 0
-  Do: 0
-  Z: 0
-  CurrentIndexItem: 0
-  loc: 0
 --- !u!1 &1333490418
 GameObject:
   m_ObjectHideFlags: 0
@@ -2588,16 +2566,16 @@ MonoBehaviour:
   Items:
   - {fileID: 4693325909965975736, guid: 799aac7a2f9809e4c8a33415368d330e, type: 3}
   - {fileID: 4693325909965975736, guid: 799aac7a2f9809e4c8a33415368d330e, type: 3}
+  - {fileID: -1803632805606809569, guid: 1680b564e7b72c44db842c3d2f03c5d5, type: 3}
   - {fileID: 4693325909965975736, guid: 799aac7a2f9809e4c8a33415368d330e, type: 3}
   - {fileID: 4693325909965975736, guid: 799aac7a2f9809e4c8a33415368d330e, type: 3}
-  - {fileID: 4693325909965975736, guid: 799aac7a2f9809e4c8a33415368d330e, type: 3}
-  - {fileID: 4693325909965975736, guid: 799aac7a2f9809e4c8a33415368d330e, type: 3}
+  - {fileID: -1803632805606809569, guid: 1680b564e7b72c44db842c3d2f03c5d5, type: 3}
   LeftPadding: 0.3
   Ot: -0.8
   Do: 10
   Z: -9.02
   CurrentIndexItem: 0
-  loc: 0
+  ListUniqItems: []
 --- !u!212 &1333490421
 SpriteRenderer:
   m_ObjectHideFlags: 0
