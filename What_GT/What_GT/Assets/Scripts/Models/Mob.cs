@@ -46,7 +46,9 @@ public class Mob
             }
         }
 
-        GameObject.transform.position = new Vector3(CurrentPoint.x + 0.5f, CurrentPoint.y + 0.5f);
+        var destination = new Vector3(CurrentPoint.x + 0.5f, CurrentPoint.y + 0.5f);
+        area.SetUpdateTask(() => GameObject.transform.position = Vector3.Lerp(GameObject.transform.position, destination, 0.1f),
+            () => GameObject.transform.position == destination);
 
         if(area.UserService.CurrentPostition == CurrentPoint)
         {

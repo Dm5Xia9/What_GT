@@ -188,6 +188,12 @@ public class UserService
     }
     private void RefrashPrompt(Lies item)
     {
+        if(blocks.FirstOrDefault(p => p.Tile == CurrentTile).IsChest)
+        {
+            Prom("Нажмите \"E\" чтобы открыть", TakeType.Chest);
+            return;
+        }
+
         if (item != null)
         {
             if (Item == null)
@@ -252,9 +258,9 @@ public class UserService
             CurrentTile = lastTile;
             return;
         }
-
-        User.transform.position = new Vector3(CurrentPostition.x + 0.5f, CurrentPostition.y + 0.5f);
-
+        var destination = new Vector3(CurrentPostition.x + 0.5f, CurrentPostition.y + 0.5f);
+        area.SetUpdateTask(() => User.transform.position = Vector3.Lerp(User.transform.position, destination, 0.1f), 
+            () => User.transform.position == destination);
 
         var mob = area.MobsService.mobs.FirstOrDefault(p => p.CurrentPoint == CurrentPostition);
         if(mob != null)
@@ -298,4 +304,5 @@ public enum TakeType
     Give,
     My,
     Exchange,
+    Chest
 }

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -37,7 +39,40 @@ public class Area : MonoBehaviour
         UserService.TakingItems();
     }
 
-    public T Inst<T>(T original, Vector3 position, Quaternion rotation) where T : Object
+    public void SetUpdateTask(Action action, Func<bool> func)
+    {
+        if(isEnd == true)
+        {
+            Thread.Sleep(100);
+        }
+
+        this.action = action;
+        this.func = func;
+        isEnd = false;
+    }
+
+    private Action action;
+    private Func<bool> func;
+    private bool isEnd = true;
+
+    private void Update()
+    {
+        if (isEnd)
+            return;
+
+        try
+        {
+            action();
+
+            isEnd = func();
+        }
+        catch
+        {
+            isEnd = true;
+        }
+    }
+
+    public T Inst<T>(T original, Vector3 position, Quaternion rotation) where T : UnityEngine.Object
     {
         return Instantiate(original, position, rotation);
     }

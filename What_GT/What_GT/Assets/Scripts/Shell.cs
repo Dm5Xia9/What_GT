@@ -42,7 +42,7 @@ public class Shell : MonoBehaviour
     }
 
     private DateTime upDt;
-    private void Update()
+    private void FixedUpdate()
     {
         if (isInit)
         {
@@ -59,6 +59,16 @@ public class Shell : MonoBehaviour
                 upDt = DateTime.Now;
             }
         }
+    }
+
+    Vector3? destination = null;
+    private void Update()
+    {
+        if (!destination.HasValue || destination == gameObject.transform.position)
+            return;
+
+
+        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, destination.Value, 0.1f);
     }
 
     private void LineMotion(bool key1, bool key2, Func<Vector2Int, int, Vector2Int> vectorFunc)
@@ -78,7 +88,9 @@ public class Shell : MonoBehaviour
             return;
         }
         print(CurrentPosition);
-        gameObject.transform.position = new Vector3(CurrentPosition.x + 0.5f, CurrentPosition.y + 0.5f, 
+
+
+        destination = new Vector3(CurrentPosition.x + 0.5f, CurrentPosition.y + 0.5f,
             gameObject.transform.position.z);
 
 
