@@ -15,6 +15,11 @@ public class Block
 
     public bool IsChest = false;
     public Chest Chest;
+
+    public float GeneratorOt;
+    public float GeneratorDo;
+
+    public bool IsDoor;
 }
 
 [Serializable]
@@ -22,11 +27,11 @@ public class Chest
 {
     public List<Item> Items;
     public TileBase Replacement;
-    public void Open(Vector2Int position, Area area)
+    public Lies Open(Vector2Int position, Area area)
     {
         area.Tilemap.SetTile((Vector3Int)position, Replacement);
 
         var randomIndex = new System.Random().Next(0, Items.Count());
-        area.LiesItemsObj.Add(Items[randomIndex], position);
+        return area.LiesItemsObj.Add(Items[randomIndex], position);
     }
 }

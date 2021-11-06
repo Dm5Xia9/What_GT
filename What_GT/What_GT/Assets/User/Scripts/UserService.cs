@@ -34,6 +34,14 @@ public class UserService
     private Text Prompt;
     private GameObject ParentPrompt;
     private Sprite BaseIcon;
+    private Text HilText;
+    private int Hils;
+    private Hilka hilka;
+
+    private Text CoinsText;
+    private int CoinsCount;
+
+    public Text StrengthText;
     public UserService(UserOptions userOptions, List<Block> blocks, Area area)
     {
         this.blocks = blocks;
@@ -53,13 +61,17 @@ public class UserService
         Prompt = userOptions.Prompt;
         ParentPrompt = Prompt.GetComponentInParent<Image>().gameObject;
         BaseIcon = userOptions.BaseIcon;
+        HilText = userOptions.Hils;
+        hilka = userOptions.Hilka;
+        AddHilk(userOptions.BaseCountHils);
+
+        CoinsText = userOptions.Moneys;
+        AddCoin(userOptions.MoneysCount);
+
+        StrengthText = userOptions.Strength;
 
         RefrashIcon();
 
-        if (!blocks.FirstOrDefault(p => p.Tile == CurrentTile)?.IsMotion ?? true)
-        {
-            throw new Exception("Попытка заспавнить игрока в блоке или блок под игроком не распознан");
-        }
 
         upDt = DateTime.Now;
         upDtMotion = DateTime.Now;
@@ -137,6 +149,24 @@ public class UserService
                 return;
 
             var item = area.LiesItemsObj.Items.FirstOrDefault(p => p.Position == CurrentPostition);
+
+            if(item != null && item.Item is Hilka hil)
+            {
+                area.LiesItemsObj.Remove(item);
+                takeType = TakeType.Give;
+                RefrashPrompt(null);
+                AddHilk(1);
+                tk = true;
+            }
+            else if (item != null && item.Item is Coin coin)
+            {
+                area.LiesItemsObj.Remove(item);
+                takeType = TakeType.Give;
+                RefrashPrompt(null);
+                AddCoin(1);
+                tk = true;
+            }
+            else
             if (takeType == TakeType.My)
             {
                 Item = item.Item;
@@ -164,6 +194,25 @@ public class UserService
                 RefrashPrompt(lies);
                 tk = true;
             }
+            else if(takeType == TakeType.Chest)
+            {
+                var block = blocks.FirstOrDefault(p => p.Tile == CurrentTile);
+
+                var lies = block.Chest.Open(CurrentPostition, area);
+
+                if (Item == null)
+                    takeType = TakeType.My;
+                else
+                    takeType = TakeType.Exchange;
+
+                RefrashPrompt(lies);
+                tk = true;
+            }
+            else if(takeType == TakeType.Door)
+            {
+                area.ReGeneration();
+                tk = true;
+            }
 
             if (tk)
             {
@@ -171,6 +220,49 @@ public class UserService
                 tk = false;
             }
         }
+    }
+
+    public void Consumables()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            UseHilk(hilka.Xp);
+        }
+    }
+
+    private void AddCoin(int count)
+    {
+        CoinsCount += count;
+
+        CoinsText.text = CoinsCount.ToString();
+    }
+
+    private void AddHilk(int count)
+    {
+        Hils += count;
+        HilText.text = Hils.ToString();
+    }
+
+    public void UseHilk(float xp)
+    {
+        if (Hils <= 0)
+            return;
+
+        Hils--;
+        HilText.text = Hils.ToString();
+
+        currentXp += xp;
+
+        if (currentXp >= 100)
+            currentXp = 100;
+
+        XpText.text = $"Здоровье: {currentXp}%";
+    }
+
+    public void DelItem()
+    {
+        Item = null;
+        RefrashIcon();
     }
 
     private void RefrashIcon()
@@ -185,17 +277,33 @@ public class UserService
 
         render.sprite = Item.gameObject.GetComponent<SpriteRenderer>().sprite;
         render.transform.localScale = Item.SizeMainIcon;
+
+        StrengthText.text = $"Прочность: {Item.Strength}";
     }
     private void RefrashPrompt(Lies item)
     {
-        if(blocks.FirstOrDefault(p => p.Tile == CurrentTile).IsChest)
+        var block = blocks.FirstOrDefault(p => p.Tile == CurrentTile);
+        if (block.IsChest)
         {
             Prom("Нажмите \"E\" чтобы открыть", TakeType.Chest);
             return;
         }
+        else if (block.IsDoor)
+        {
+            Prom("Телепортация...", TakeType.Door);
+            return;
+        }
+
 
         if (item != null)
         {
+
+            if(item.Item is Hilka || item.Item is Coin)
+            {
+                Prom("Нажмите \"E\" чтобы взять", TakeType.My);
+                return;
+            }
+
             if (Item == null)
                 Prom("Нажмите \"E\" чтобы взять", TakeType.My);
             else
@@ -258,9 +366,6 @@ public class UserService
             CurrentTile = lastTile;
             return;
         }
-        var destination = new Vector3(CurrentPostition.x + 0.5f, CurrentPostition.y + 0.5f);
-        area.SetUpdateTask(() => User.transform.position = Vector3.Lerp(User.transform.position, destination, 0.1f), 
-            () => User.transform.position == destination);
 
         var mob = area.MobsService.mobs.FirstOrDefault(p => p.CurrentPoint == CurrentPostition);
         if(mob != null)
@@ -280,6 +385,11 @@ public class UserService
             foreach (var d in damages)
                 d.Collision();
         }
+
+
+        var destination = new Vector3(CurrentPostition.x + 0.5f, CurrentPostition.y + 0.5f);
+        area.SetUpdateTask(() => User.transform.position = Vector3.Lerp(User.transform.position, destination, 0.1f),
+            () => User.transform.position == destination);
 
         var item = area.LiesItemsObj.Items.FirstOrDefault(p => p.Position == CurrentPostition);
         RefrashPrompt(item);
@@ -304,5 +414,6 @@ public enum TakeType
     Give,
     My,
     Exchange,
-    Chest
+    Chest,
+    Door
 }

@@ -21,6 +21,9 @@ public abstract class Item : MonoBehaviour
 
     public List<Shell> ShellObjs { get; set; }
 
+    public int RandomStrength = 10;
+
+    public float Strength { get; set; } = 100;
     private void Start()
     {
         ShellObjs = new List<Shell>();
@@ -34,6 +37,30 @@ public abstract class Item : MonoBehaviour
     //{
     //    alreadyNoSelect = true;
     //}
+
+    protected void Broke(Area area)
+    {
+        var rd = new System.Random();
+
+        var d = rd.Next(0, RandomStrength);
+
+        if(d == 0)
+        {
+            Strength -= rd.Next(1, 100);
+
+            if(Strength <= 0)
+            {
+                area.UserService.StrengthText.text = $"Оружие сломано";
+                area.UserService.DelItem();
+
+                Strength = 100;
+            }
+            else
+            {
+                area.UserService.StrengthText.text = $"Прочность: {Strength}";
+            }
+        }
+    }
 
     private void Update()
     {

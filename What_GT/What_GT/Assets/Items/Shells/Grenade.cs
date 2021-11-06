@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class Grenade : Shell
 {
+    public int CountBlock = 6;
     public override void Collision()
     {
         BoundsInt bounds = area.Tilemap.cellBounds;
@@ -26,8 +27,11 @@ public class Grenade : Shell
             area.Tilemap.SetTile((Vector3Int)vector, null);
         }
 
-        area.MobsService.mobs.Where(p => p.GameObject != null).Where(p => vectors.Contains(p.CurrentPoint)).ToList().
-            ForEach(p => p.Hit(Damage));
+        var e1 = area.MobsService.mobs.Where(p => p != null && p.gameObject != null);
+
+        var e2 = e1.Where(p => vectors.Contains(p.CurrentPoint)).ToList();
+
+        e2.ForEach(p => p.Hit(Damage));
 
         if (vectors.Contains(area.UserService.CurrentPostition))
         {
@@ -35,5 +39,13 @@ public class Grenade : Shell
         }
 
         base.Collision();
+    }
+
+    public override bool FixedEnd()
+    {
+        if (CountStep >= CountBlock)
+            return true;
+        else
+            return false;
     }
 }

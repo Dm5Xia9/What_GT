@@ -20,4 +20,11 @@ public class UserOptions
     public GameObject IconSprite;
     public Sprite BaseIcon;
     public Text Prompt;
+    public Text Hils;
+    public int BaseCountHils;
+    public Hilka Hilka;
+    public Text Moneys;
+    public int MoneysCount;
+    public Text Message;
+    public Text Strength;
 }

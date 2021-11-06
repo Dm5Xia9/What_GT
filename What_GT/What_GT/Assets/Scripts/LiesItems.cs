@@ -10,15 +10,29 @@ public class LiesItems : MonoBehaviour
     public List<Lies> Items;
 
     private Area area;
+
+    private List<Lies> MainItems = new List<Lies>();
+
     public void Init(Area area)
     {
         this.area = area;
         foreach (var item in Items)
         {
-            item.GameObject = area.Inst(item.Item.gameObject, new Vector3(item.Position.x + 0.5f, item.Position.y + 0.5f, -0.14f), Quaternion.identity);
+            //item.GameObject = area.Inst(item.Item.gameObject, new Vector3(item.Position.x + 0.5f, item.Position.y + 0.5f, -0.14f), Quaternion.identity);
 
-            item.GameObject.transform.localScale = item.Item.SizeDropIcon;
+            //item.GameObject.transform.localScale = item.Item.SizeDropIcon;
+
+            MainItems.Add(item);
         }
+    }
+
+    public void Rerfash()
+    {
+        Items.Where(p => p != null && p.GameObject != null && p.Item != null && p.Item.gameObject != null && 
+            !MainItems.Contains(p)).ToList().ForEach(p => Remove(p));
+
+        Items.Clear();
+        Items.AddRange(MainItems);
     }
 
     public Lies Add(Item item, Vector2Int position)

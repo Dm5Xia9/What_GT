@@ -42,12 +42,28 @@ public class Shell : MonoBehaviour
     }
 
     private DateTime upDt;
+
+    public int CountStep;
+    public virtual bool FixedEnd()
+    {
+        return false;
+    }
+
     private void FixedUpdate()
     {
         if (isInit)
         {
             if (DateTime.Now - upDt >= new TimeSpan(0, 0, 0, 0, Timer))
             {
+
+                if (FixedEnd())
+                {
+                    Collision();
+                    return;
+                }
+
+                CountStep++;
+
                 if (IsKeyS || IsKeyW)
                 {
                     LineMotion(IsKeyW, IsKeyS, (p, c) => new Vector2Int(p.x, p.y + c * 1));
@@ -77,13 +93,11 @@ public class Shell : MonoBehaviour
 
         var lastPosition = CurrentPosition;
         var lastTile = CurrentTile;
-        print(CurrentPosition);
         CurrentPosition = vectorFunc(CurrentPosition, c);
         CurrentTile = area.Tilemap.GetTile((Vector3Int)CurrentPosition);
 
-        if (!area.BlockList.FirstOrDefault(p => p.Tile == CurrentTile)?.IsMotion ?? true)
+        if (!area.BlockList.FirstOrDefault(p => p.Tile == CurrentTile)?.IsMotion ?? false)
         {
-            print("de");
             Collision();
             return;
         }

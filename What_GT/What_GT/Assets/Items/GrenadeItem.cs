@@ -17,5 +17,7 @@ public class GrenadeItem : Item
         qrenadeObj.Init(area, keyCode);
 
         ShellObjs.Add(qrenadeObj);
+
+        Broke(area);
     }
 }
