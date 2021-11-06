@@ -11,7 +11,7 @@ public class RangedWeapon : Item
     public override void Action(Area area, KeyCode keyCode)
     {
         var shell = Instantiate(Shell);
-        var shellObj = shell.GetComponent<Shell>();
+        var shellObj = shell.GetComponent<Star>();
         if (shellObj == null)
             print("null");
         shellObj.Init(area, keyCode);
