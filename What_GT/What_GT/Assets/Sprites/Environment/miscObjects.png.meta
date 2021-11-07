@@ -1,34 +1,7 @@
 fileFormatVersion: 2
-guid: ce84ab6a5e3575f478d70b1317c70752
+guid: ae592091024edd2428edd96e45c94614
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 8989851538916584733
-    second: Mushdoom0
-  - first:
-      213: 664215540950870835
-    second: Mushdoom1
-  - first:
-      213: -1391459933878840966
-    second: Mushdoom2
-  - first:
-      213: 224752277867764606
-    second: Mushdoom3
-  - first:
-      213: 413605621392367371
-    second: Mushdoom4
-  - first:
-      213: 4567500151528955793
-    second: Mushdoom5
-  - first:
-      213: -552790044359973432
-    second: Mushdoom6
-  - first:
-      213: -3956054101493178664
-    second: Mushdoom7
-  - first:
-      213: 6235254255168624871
-    second: Mushdoom8
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -74,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -120,7 +93,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -132,7 +105,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -144,7 +117,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -155,190 +128,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mushdoom0
+      name: miscObjects_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 133
-        width: 64
-        height: 64
+        x: 0
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d1d2f98285e52cc70800000000000000
-      internalID: 8989851538916584733
+      spriteID: 499fb32b57db4a74992be40cbba00ecc
+      internalID: -535262353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushdoom1
+      name: miscObjects_1
       rect:
         serializedVersion: 2
-        x: 67
-        y: 133
-        width: 64
-        height: 64
+        x: 32
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 33babace384c73900800000000000000
-      internalID: 664215540950870835
+      spriteID: e68fd0d4948fe19499f1334e47043325
+      internalID: 1098151606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushdoom2
+      name: miscObjects_2
       rect:
         serializedVersion: 2
-        x: 133
-        y: 133
-        width: 64
-        height: 64
+        x: 64
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a7196f9ff8a80bce0800000000000000
-      internalID: -1391459933878840966
+      spriteID: 477a0c8f562fc4749a1f72fd32837021
+      internalID: 1682376567
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushdoom3
+      name: miscObjects_3
       rect:
         serializedVersion: 2
-        x: 1
-        y: 67
-        width: 64
-        height: 64
+        x: 96
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e7b94c4810b7e1300800000000000000
-      internalID: 224752277867764606
+      spriteID: 42fcb910235135644a7a4a68aa253ca9
+      internalID: -1604371160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushdoom4
+      name: miscObjects_4
       rect:
         serializedVersion: 2
-        x: 67
-        y: 67
-        width: 64
-        height: 64
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b0f523c0f1c6db500800000000000000
-      internalID: 413605621392367371
+      spriteID: 9a4e7c10ae26c1144a313a766bba7234
+      internalID: -176154915
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mushdoom5
+      name: miscObjects_5
       rect:
         serializedVersion: 2
-        x: 133
-        y: 67
-        width: 64
-        height: 64
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 19f1d6b2035036f30800000000000000
-      internalID: 4567500151528955793
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushdoom6
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 1
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8c52d8a22681458f0800000000000000
-      internalID: -552790044359973432
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushdoom7
-      rect:
-        serializedVersion: 2
-        x: 67
-        y: 1
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8de954831c54919c0800000000000000
-      internalID: -3956054101493178664
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushdoom8
-      rect:
-        serializedVersion: 2
-        x: 133
-        y: 1
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7e8919395b2188650800000000000000
-      internalID: 6235254255168624871
+      spriteID: f78153007260b8340a4e3cf370752952
+      internalID: -1450740205
       vertices: []
       indices: 
       edges: []
@@ -354,15 +264,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mushdoom0: 8989851538916584733
-      Mushdoom7: -3956054101493178664
-      Mushdoom5: 4567500151528955793
-      Mushdoom2: -1391459933878840966
-      Mushdoom1: 664215540950870835
-      Mushdoom6: -552790044359973432
-      Mushdoom8: 6235254255168624871
-      Mushdoom4: 413605621392367371
-      Mushdoom3: 224752277867764606
+      miscObjects_0: -535262353
+      miscObjects_1: 1098151606
+      miscObjects_3: -1604371160
+      miscObjects_5: -1450740205
+      miscObjects_4: -176154915
+      miscObjects_2: 1682376567
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
