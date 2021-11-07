@@ -9,7 +9,7 @@ public class Mob : MonoBehaviour
 {
     public List<Vector2Int> Points;
 
-    private int currentIndex;
+    public int currentIndex;
     public Vector2Int CurrentPoint => Points[currentIndex];
     private Direction direction;
     public float Damage;
@@ -45,7 +45,7 @@ public class Mob : MonoBehaviour
             return;
 
 
-        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, destination.Value, 0.1f);
+        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, destination.Value, 0.2f);
     }
 
     public void Motion(Area area)
@@ -87,7 +87,7 @@ public class Mob : MonoBehaviour
 
         if (area.UserService.CurrentPostition == CurrentPoint)
         {
-            area.UserService.Hit(Damage);
+            area.UserService.Hit(Damage, "Последний раз умер от паука");
         }
 
         if (area.UserService.Item is RangedWeapon wea)

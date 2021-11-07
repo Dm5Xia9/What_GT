@@ -340,13 +340,14 @@ public class UserService
         area.Print($"S {time.TotalMilliseconds}");
     }
 
-    public void Hit(float hit)
+    public void Hit(float hit, string who)
     {
         currentXp -= hit;
 
         if (currentXp <= 0)
         {
             IsDead = true;
+            PlayerPrefs.SetString("who", who);
             SceneManager.LoadScene(0);
         }
 
@@ -373,7 +374,7 @@ public class UserService
         var mob = area.MobsService.mobs.FirstOrDefault(p => p.CurrentPoint == CurrentPostition);
         if(mob != null)
         {
-            Hit(mob.Damage);
+            Hit(mob.Damage, "Последний раз умер от паука");
         }
 
         if(Item is RangedWeapon wea)
@@ -382,7 +383,7 @@ public class UserService
 
             if (damages.Any())
             {
-                Hit(damages.Sum(p => p.Damage));
+                Hit(damages.Sum(p => p.Damage), "Последний раз умер от снаряда");
             }
 
             foreach (var d in damages)
@@ -391,7 +392,7 @@ public class UserService
 
 
         var destination = new Vector3(CurrentPostition.x + 0.5f, CurrentPostition.y + 0.5f);
-        area.SetUpdateTask(() => User.transform.position = Vector3.Lerp(User.transform.position, destination, 0.1f),
+        area.SetUpdateTask(() => User.transform.position = Vector3.Lerp(User.transform.position, destination, 0.2f),
             () => User.transform.position == destination);
 
         var item = area.LiesItemsObj.Items.FirstOrDefault(p => p.Position == CurrentPostition);

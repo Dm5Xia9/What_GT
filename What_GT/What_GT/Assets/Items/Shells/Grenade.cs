@@ -36,7 +36,7 @@ public class Grenade : Shell
 
         if (vectors.Contains(area.UserService.CurrentPostition))
         {
-            area.UserService.Hit(Damage);
+            area.UserService.Hit(Damage, "Последний раз умер от своего же взрыва");
         }
 
         base.Collision();

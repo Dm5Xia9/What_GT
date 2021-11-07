@@ -83,7 +83,7 @@ public class Shell : MonoBehaviour
             return;
 
 
-        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, destination.Value, 0.1f);
+        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, destination.Value, 0.2f);
     }
 
     private void LineMotion(bool key1, bool key2, Func<Vector2Int, int, Vector2Int> vectorFunc)
@@ -116,7 +116,7 @@ public class Shell : MonoBehaviour
         var isDamageUser = area.UserService.CurrentPostition == CurrentPosition;
         if (isDamageUser)
         {
-            area.UserService.Hit(Damage);
+            area.UserService.Hit(Damage, "Последний раз умер от снаряда");
             Collision();
         }
     }

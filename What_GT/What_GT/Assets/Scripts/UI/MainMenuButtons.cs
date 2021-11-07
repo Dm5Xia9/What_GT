@@ -1,5 +1,6 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 #if UNITY_EDITOR
 
@@ -9,6 +10,9 @@ using UnityEditor;
 
 public class MainMenuButtons : MonoBehaviour
 {
+
+    public Text Text;
+
     public void UIQuit()
     {
 #if UNITY_EDITOR
@@ -16,6 +20,13 @@ public class MainMenuButtons : MonoBehaviour
 #else
         Application.Quit();
 #endif
+
+        PlayerPrefs.SetString("who", null);
+    }
+
+    private void Start()
+    {
+        Text.text = PlayerPrefs.GetString("who");
     }
 
     public void UIStart()
