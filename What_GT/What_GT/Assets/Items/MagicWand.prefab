@@ -102,8 +102,8 @@ MonoBehaviour:
   Border: {fileID: 0}
   alreadySelect: 0
   alreadyNoSelect: 0
-  DelayMilliseconds: 1000
+  DelayMilliseconds: 100
   SizeDropIcon: {x: 1, y: 1, z: 0}
   SizeMainIcon: {x: 70, y: 70, z: 0}
-  RandomStrength: 10
+  RandomStrength: 40
   Shell: {fileID: 8608027485021277281, guid: 40ca2d7a6eb7ee548ac5010197b7798c, type: 3}

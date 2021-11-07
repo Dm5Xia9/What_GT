@@ -34,6 +34,11 @@ public class Area : MonoBehaviour
     public Text houseText;
 
     public static Area Ar;
+
+    public static System.Random rd;
+
+    public Tilemap map;
+    public GameObject BlocksMap;
     void Start()
     {
         Ar = this;
@@ -48,11 +53,11 @@ public class Area : MonoBehaviour
         }
         else
         {
+            rd = new System.Random();
             LiesItemsObj = LiesItems.GetComponent<LiesItems>();
             LiesItemsObj.Init(this);
 
             BlockList = Blocks.GetComponent<Blocks>().blocks;
-            var rd = new System.Random();
             UserService = new UserService(UserOptions, BlockList, this);
             MobsService = Mobs.GetComponent<Mobs>();
             MobsService.Init(this);
@@ -62,6 +67,7 @@ public class Area : MonoBehaviour
             generatorOptions.seed = rd.Next(1, 100000);
             var mapPoints = generatorOptions.Generate();
 
+            var blocksMap = BlocksMap.GetComponent<Blocks>().blocks;
             var i = OtX;
                 
             var countChest = 0;
@@ -70,7 +76,7 @@ public class Area : MonoBehaviour
                 var j = OtY; 
                 foreach (var colomn in line)
                 {
-
+                    var isEnt = false;
                     var bl = BlockList.FirstOrDefault(p => p.GeneratorOt < colomn && p.GeneratorDo > colomn);
 
                     if (countChest <= 5)
@@ -79,6 +85,7 @@ public class Area : MonoBehaviour
                         {
                             bl = BlockList.FirstOrDefault(p => p.IsChest);
                             countChest++;
+                            isEnt = true;
                         }
                     }
 
@@ -103,7 +110,24 @@ public class Area : MonoBehaviour
                     {
                         var mo = LiesItemsObj.Items[rd.Next(0, LiesItemsObj.Items.Count())].Item;
                         LiesItemsObj.Add(mo, new Vector2Int(i, j));
+                        isEnt = true;
                     }
+
+                    if (isEnt)
+                    {
+                        j++;
+                        continue;
+                    }
+
+                    var bll = blocksMap.FirstOrDefault(p => p.GeneratorOt < colomn && p.GeneratorDo > colomn);
+                    if(bll == null)
+                    {
+                        j++;
+                        continue;
+                    }
+
+                    map.SetTile(new Vector3Int(i, j), bll.Tile);
+
 
                     j++;
                 }
@@ -119,7 +143,6 @@ public class Area : MonoBehaviour
         if (MobsService.mobs.Where(p => p != null && p.gameObject != null && !MobsService.MainMobs.Contains(p)).Count() >= 8)
             return;
 
-        var rd = new System.Random();
         MobsService.Clear();
         LiesItemsObj.Rerfash();
         generatorOptions.seed = rd.Next(1, 100000);

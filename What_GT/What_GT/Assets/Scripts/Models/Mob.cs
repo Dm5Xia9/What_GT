@@ -20,6 +20,8 @@ public class Mob : MonoBehaviour
         area = Area.Ar;
 
         upDt = DateTime.Now;
+
+        
     }
 
 
@@ -107,10 +109,10 @@ public class Mob : MonoBehaviour
     public void Hit(float damage, bool isClear = false)
     {
         Xp -= damage;
+        area.MobsService.KillAudio.Play();
         if (Xp <= 0 && gameObject != null)
         {
             Destroy(gameObject);
-
             if (!isClear)
             {
                 area.killCount++;

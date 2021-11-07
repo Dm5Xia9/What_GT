@@ -31,7 +31,6 @@ public class Shell : MonoBehaviour
         CurrentPosition = area.UserService.CurrentPostition;
         gameObject.transform.position = new Vector3(CurrentPosition.x + 0.5f, CurrentPosition.y + 0.5f, gameObject.transform.position.z);
         gameObject.transform.localScale = Size;
-        print("init");
         IsKeyW = keyCode == KeyCode.UpArrow;
         IsKeyD = keyCode == KeyCode.RightArrow;
         IsKeyA = keyCode == KeyCode.LeftArrow;
@@ -101,7 +100,6 @@ public class Shell : MonoBehaviour
             Collision();
             return;
         }
-        print(CurrentPosition);
 
 
         destination = new Vector3(CurrentPosition.x + 0.5f, CurrentPosition.y + 0.5f,

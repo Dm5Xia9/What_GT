@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
@@ -345,6 +346,7 @@ public class UserService
         if (currentXp <= 0)
         {
             IsDead = true;
+            SceneManager.LoadScene(0);
         }
 
         XpText.text = $"Здоровье: {currentXp}%";

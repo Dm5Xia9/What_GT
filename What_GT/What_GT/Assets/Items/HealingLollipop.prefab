@@ -103,7 +103,7 @@ MonoBehaviour:
   alreadySelect: 0
   alreadyNoSelect: 0
   DelayMilliseconds: 1000
-  SizeDropIcon: {x: 0, y: 0, z: 0}
+  SizeDropIcon: {x: 1, y: 1, z: 0}
   SizeMainIcon: {x: 0, y: 0, z: 0}
   RandomStrength: 10
   Xp: 100

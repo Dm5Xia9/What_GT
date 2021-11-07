@@ -19,14 +19,14 @@ public abstract class Item : MonoBehaviour
     public Vector3 SizeDropIcon;
     public Vector3 SizeMainIcon;
 
-    public List<Shell> ShellObjs { get; set; }
+    public List<Shell> ShellObjs { get; set; } = new List<Shell>();
 
     public int RandomStrength = 10;
 
     public float Strength { get; set; } = 100;
     private void Start()
     {
-        ShellObjs = new List<Shell>();
+
     }
 
     public virtual void Action(Area area, KeyCode keyCode)
@@ -40,13 +40,11 @@ public abstract class Item : MonoBehaviour
 
     protected void Broke(Area area)
     {
-        var rd = new System.Random();
-
-        var d = rd.Next(0, RandomStrength);
+        var d = Area.rd.Next(0, RandomStrength);
 
         if(d == 0)
         {
-            Strength -= rd.Next(1, 100);
+            Strength -= Area.rd.Next(1, 100);
 
             if(Strength <= 0)
             {

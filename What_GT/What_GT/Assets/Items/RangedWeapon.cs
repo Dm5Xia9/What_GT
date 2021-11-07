@@ -17,5 +17,7 @@ public class RangedWeapon : Item
         shellObj.Init(area, keyCode);
 
         ShellObjs.Add(shellObj);
+
+        Broke(area);
     }
 }

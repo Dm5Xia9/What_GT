@@ -25,6 +25,7 @@ public class Grenade : Shell
         foreach(var vector in vectors)
         {
             area.Tilemap.SetTile((Vector3Int)vector, null);
+            area.map.SetTile((Vector3Int)vector, null);
         }
 
         var e1 = area.MobsService.mobs.Where(p => p != null && p.gameObject != null);

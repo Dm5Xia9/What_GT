@@ -11,6 +11,12 @@ public class Mobs : MonoBehaviour
 
     private Area area;
     public List<List<Vector2Int>> Pole;
+
+    public AudioSource KillAudio;
+    private void Start()
+    {
+        KillAudio = GetComponent<AudioSource>();
+    }
     public void Init(Area area)
     {
         this.area = area;
@@ -31,7 +37,6 @@ public class Mobs : MonoBehaviour
     private DateTime upDt;
 
     Dictionary<Mob, Vector3> mobVectors = new Dictionary<Mob, Vector3>();
-
 
     public void Clear()
     {
