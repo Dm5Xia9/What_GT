@@ -79,9 +79,9 @@ public class Area : MonoBehaviour
                     var isEnt = false;
                     var bl = BlockList.FirstOrDefault(p => p.GeneratorOt < colomn && p.GeneratorDo > colomn);
 
-                    if (countChest <= 5)
+                    if (countChest <= 10)
                     {
-                        if(rd.Next(0, 150) == 0)
+                        if(rd.Next(0, 120) == 0)
                         {
                             bl = BlockList.FirstOrDefault(p => p.IsChest);
                             countChest++;
@@ -106,7 +106,7 @@ public class Area : MonoBehaviour
                         MobsService.mobs.Add(obj);
                     }
 
-                    if (rd.Next(0, 300) == 0)
+                    if (rd.Next(0, 200) == 0)
                     {
                         var mo = LiesItemsObj.Items[rd.Next(0, LiesItemsObj.Items.Count())].Item;
                         LiesItemsObj.Add(mo, new Vector2Int(i, j));
@@ -159,9 +159,9 @@ public class Area : MonoBehaviour
 
                 var bl = BlockList.FirstOrDefault(p => p.GeneratorOt < colomn && p.GeneratorDo > colomn);
 
-                if (countChest <= 5)
+                if (countChest <= 10)
                 {
-                    if (rd.Next(0, 150) == 0)
+                    if (rd.Next(0, 120) == 0)
                     {
                         bl = BlockList.FirstOrDefault(p => p.IsChest);
                         countChest++;
@@ -185,7 +185,7 @@ public class Area : MonoBehaviour
                     MobsService.mobs.Add(obj);
                 }
 
-                if (rd.Next(0, 300) == 0)
+                if (rd.Next(0, 200) == 0)
                 {
                     var mo = LiesItemsObj.Items[rd.Next(0, LiesItemsObj.Items.Count())].Item;
                     LiesItemsObj.Add(mo, new Vector2Int(i, j));

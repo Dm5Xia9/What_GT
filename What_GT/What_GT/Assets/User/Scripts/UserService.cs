@@ -201,6 +201,7 @@ public class UserService
 
                 var lies = block.Chest.Open(CurrentPostition, area);
 
+                CurrentTile = block.Chest.Replacement;
                 if (Item == null)
                     takeType = TakeType.My;
                 else

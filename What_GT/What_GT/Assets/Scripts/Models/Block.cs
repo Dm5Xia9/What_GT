@@ -31,7 +31,7 @@ public class Chest
     {
         area.Tilemap.SetTile((Vector3Int)position, Replacement);
 
-        var randomIndex = new System.Random().Next(0, Items.Count());
+        var randomIndex = Area.rd.Next(0, Items.Count());
         return area.LiesItemsObj.Add(Items[randomIndex], position);
     }
 }

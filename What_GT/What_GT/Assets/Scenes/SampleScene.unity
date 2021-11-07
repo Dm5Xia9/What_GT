@@ -397,6 +397,12 @@ MonoBehaviour:
     Position: {x: 1, y: 3}
   - Item: {fileID: 1270856370056651573, guid: 7a78141998284cf4bb1579791743099a, type: 3}
     Position: {x: 1, y: 4}
+  - Item: {fileID: 5099168685923074590, guid: 0c73fb0acf38367469796e59b9b6c9c1, type: 3}
+    Position: {x: 1, y: 5}
+  - Item: {fileID: 6340569035736111400, guid: 1ee333179694b76439e2adcef154bf66, type: 3}
+    Position: {x: 1, y: 6}
+  - Item: {fileID: 7017804647550682636, guid: 71f5f8cb5c637a14095a41d775b0c37e, type: 3}
+    Position: {x: 1, y: 7}
 --- !u!4 &85164232
 Transform:
   m_ObjectHideFlags: 0
@@ -562,7 +568,7 @@ MonoBehaviour:
       Items: []
       Replacement: {fileID: 0}
     GeneratorOt: 0
-    GeneratorDo: 0.05
+    GeneratorDo: 0.02
     IsDoor: 0
   - IsMotion: 0
     Tile: {fileID: 11400000, guid: 5f8c32c8a2a4fb5499644357f998da44, type: 2}
@@ -570,8 +576,8 @@ MonoBehaviour:
     Chest:
       Items: []
       Replacement: {fileID: 0}
-    GeneratorOt: 0.05
-    GeneratorDo: 0.1
+    GeneratorOt: 0.5
+    GeneratorDo: 0.55
     IsDoor: 0
   - IsMotion: 0
     Tile: {fileID: 11400000, guid: 5129dad202f10574c964c2386cdf7505, type: 2}
@@ -579,8 +585,8 @@ MonoBehaviour:
     Chest:
       Items: []
       Replacement: {fileID: 0}
-    GeneratorOt: 0.1
-    GeneratorDo: 0.15
+    GeneratorOt: 0.04
+    GeneratorDo: 0.06
     IsDoor: 0
   - IsMotion: 0
     Tile: {fileID: 11400000, guid: 92d7684d34e7b64468ecb50824d1e93b, type: 2}
@@ -588,8 +594,8 @@ MonoBehaviour:
     Chest:
       Items: []
       Replacement: {fileID: 0}
-    GeneratorOt: 0.15
-    GeneratorDo: 0.2
+    GeneratorOt: 0.06
+    GeneratorDo: 0.08
     IsDoor: 0
   - IsMotion: 0
     Tile: {fileID: 11400000, guid: 7cb31e1214438604497c099c85233443, type: 2}
@@ -597,8 +603,8 @@ MonoBehaviour:
     Chest:
       Items: []
       Replacement: {fileID: 0}
-    GeneratorOt: 0.2
-    GeneratorDo: 0.25
+    GeneratorOt: 0.08
+    GeneratorDo: 0.1
     IsDoor: 0
   - IsMotion: 0
     Tile: {fileID: 11400000, guid: ed1823565c8b57b4ab63bcb293cdca37, type: 2}
@@ -606,8 +612,8 @@ MonoBehaviour:
     Chest:
       Items: []
       Replacement: {fileID: 0}
-    GeneratorOt: 0.25
-    GeneratorDo: 0.3
+    GeneratorOt: 0.1
+    GeneratorDo: 0.12
     IsDoor: 0
   - IsMotion: 0
     Tile: {fileID: 11400000, guid: bc8f4b35826eefe42b0f3012d2bd6f2a, type: 2}
@@ -615,8 +621,62 @@ MonoBehaviour:
     Chest:
       Items: []
       Replacement: {fileID: 0}
-    GeneratorOt: 0.3
-    GeneratorDo: 0.35
+    GeneratorOt: 0.12
+    GeneratorDo: 0.14
+    IsDoor: 0
+  - IsMotion: 0
+    Tile: {fileID: 11400000, guid: 5afcdabfe11cbc84f9ad68cc29075210, type: 2}
+    IsChest: 0
+    Chest:
+      Items: []
+      Replacement: {fileID: 0}
+    GeneratorOt: 0.14
+    GeneratorDo: 0.16
+    IsDoor: 0
+  - IsMotion: 0
+    Tile: {fileID: 11400000, guid: 769af821e272a2e4ba7486f5bb089f06, type: 2}
+    IsChest: 0
+    Chest:
+      Items: []
+      Replacement: {fileID: 0}
+    GeneratorOt: 0.16
+    GeneratorDo: 0.18
+    IsDoor: 0
+  - IsMotion: 0
+    Tile: {fileID: 11400000, guid: b8da6b00191afe94c8ad8852e0f862c8, type: 2}
+    IsChest: 0
+    Chest:
+      Items: []
+      Replacement: {fileID: 0}
+    GeneratorOt: 0.18
+    GeneratorDo: 0.2
+    IsDoor: 0
+  - IsMotion: 0
+    Tile: {fileID: 11400000, guid: 3bccf3e5c3baf914ca63d5426df48caf, type: 2}
+    IsChest: 0
+    Chest:
+      Items: []
+      Replacement: {fileID: 0}
+    GeneratorOt: 0.2
+    GeneratorDo: 0.22
+    IsDoor: 0
+  - IsMotion: 0
+    Tile: {fileID: 11400000, guid: f3dd4cc6fa3eb3e4e9f5043c8ba1bd3c, type: 2}
+    IsChest: 0
+    Chest:
+      Items: []
+      Replacement: {fileID: 0}
+    GeneratorOt: 0.22
+    GeneratorDo: 0.222
+    IsDoor: 0
+  - IsMotion: 0
+    Tile: {fileID: 11400000, guid: e0147232d84798849a32fc9941fbad0a, type: 2}
+    IsChest: 0
+    Chest:
+      Items: []
+      Replacement: {fileID: 0}
+    GeneratorOt: 0.24
+    GeneratorDo: 0.26
     IsDoor: 0
 --- !u!4 &144867853
 Transform:
@@ -5818,6 +5878,9 @@ MonoBehaviour:
       - {fileID: -5901782157293741424, guid: ee2809c36ba6a1444a872be4c7ab944c, type: 3}
       - {fileID: 944221345693343360, guid: b2d7a36e490172e45b0af5baeb090062, type: 3}
       - {fileID: 1270856370056651573, guid: 7a78141998284cf4bb1579791743099a, type: 3}
+      - {fileID: 5099168685923074590, guid: 0c73fb0acf38367469796e59b9b6c9c1, type: 3}
+      - {fileID: 6340569035736111400, guid: 1ee333179694b76439e2adcef154bf66, type: 3}
+      - {fileID: 7017804647550682636, guid: 71f5f8cb5c637a14095a41d775b0c37e, type: 3}
       Replacement: {fileID: 11400000, guid: 574c9ea6421faaf49855ac6d98f023cc, type: 2}
     GeneratorOt: 0
     GeneratorDo: 0
